@@ -1,0 +1,272 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>（六）数组 | 和月亮一起看星星</title><meta name="author" content="Xuehui"><meta name="copyright" content="Xuehui"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数组基本概念 逻辑：一次性定义多个相同类型的变量，并存储到一片连续的内存中 语法：  数据类型  数组名字  [ 元素的数量 ] ; &#x2F;&#x2F; 定义数组  数据类型  数组名字  [ 元素的数量 ]  &#x3D; { 元素1的值 , 元素2的值, …..  ,元素N的值};&#x2F;&#x2F; 定义数组并进行初始化 整形数组的定义： int  arr1 [5] ;  int">
+<meta property="og:type" content="article">
+<meta property="og:title" content="（六）数组">
+<meta property="og:url" content="http://example.com/2024/02/24/6.%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:site_name" content="和月亮一起看星星">
+<meta property="og:description" content="数组基本概念 逻辑：一次性定义多个相同类型的变量，并存储到一片连续的内存中 语法：  数据类型  数组名字  [ 元素的数量 ] ; &#x2F;&#x2F; 定义数组  数据类型  数组名字  [ 元素的数量 ]  &#x3D; { 元素1的值 , 元素2的值, …..  ,元素N的值};&#x2F;&#x2F; 定义数组并进行初始化 整形数组的定义： int  arr1 [5] ;  int">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-02-24T14:54:55.967Z">
+<meta property="article:modified_time" content="2024-02-24T15:14:42.937Z">
+<meta property="article:author" content="Xuehui">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Butterfly">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/02/24/6.%E6%95%B0%E7%BB%84/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '（六）数组',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-24 23:14:42'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="和月亮一起看星星"><span class="site-name">和月亮一起看星星</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">（六）数组</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-24T14:54:55.967Z" title="发表于 2024-02-24 22:54:55">2024-02-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-24T15:14:42.937Z" title="更新于 2024-02-24 23:14:42">2024-02-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="（六）数组"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a><strong>基本概念</strong></h4><ul>
+<li>逻辑：一次性定义多个相同类型的变量，并存储到一片连续的内存中</li>
+<li>语法：</li>
+</ul>
+<p>数据类型  数组名字  [ 元素的数量 ] ; &#x2F;&#x2F; 定义数组  数据类型  数组名字  [ 元素的数量 ]  &#x3D; { 元素1的值 , 元素2的值, …..  ,元素N的值};&#x2F;&#x2F; 定义数组并进行初始化</p>
+<p><strong>整形数组的定义：</strong></p>
+<p>int  arr1 [5] ;  int  arr2 [5] &#x3D; {1 , 2 , 3 , 4 , 5}; </p>
+<ul>
+<li><p><strong>语法释义：</strong></p>
+</li>
+<li><ul>
+<li>arr 是数组名，即这片连续内存的名称</li>
+<li>[5] 代表这片连续内存总共分成5个相等的格子，每个格子称为数组的元素</li>
+<li>int 代表每个元素的类型，也可以是任意基本类型，也可以是组合类型，甚至可以是数组</li>
+</ul>
+</li>
+</ul>
+<p> <img src="D:/blog/hexo/source/imgs/$%7Bfiilename%7D/image-20240109213232362-17087871978833.png" alt="image-20240109213232362"></p>
+<h4 id="如何访问数组（赋值、取值）："><a href="#如何访问数组（赋值、取值）：" class="headerlink" title="如何访问数组（赋值、取值）："></a><strong>如何访问数组（赋值、取值）：</strong></h4><ul>
+<li>存储模式：一片连续的内存，按数据类型分割成若干相同大小的格子</li>
+<li>元素下标：从数组开头位置的偏移量 ， 因此数组的下标就等于 偏移量</li>
+</ul>
+<p><img src="D:/blog/hexo/source/imgs/$%7Bfiilename%7D/image-20240109213244142.png" alt="image-20240109213244142"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组名[ 需要操作的元素下标 ] = 数据 ;   // 使用数据 给数组中某一个元素进行赋值 </span><br><span class="line">变量  = 数组名[ 需要操作的元素下标 ] ; // 使用数组中的某一个元素给 变量进行赋值</span><br></pre></td></tr></table></figure>
+
+<p><strong>实例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char const *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    int  arr  [5] = &#123;1,2,3,4,5&#125; ;</span><br><span class="line"></span><br><span class="line">    arr[2] = 250 ; // 把数组中的第三个数据修改位 250 </span><br><span class="line">    int tmp = arr[4] ;  // 把数组中的第五个数据取出来存放到 tmp 变量中</span><br><span class="line">    int tmp1 = arr[5] ; // 【错误】 属于越界访问， 有可能造成段错误 </span><br><span class="line"></span><br><span class="line">    // 如何遍历整个数组</span><br><span class="line">    for (int i = 0; i &lt; 5 ; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;arr[%d]:%d\n&quot; , i , arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    printf(&quot;tmp:%d tmp1:%d\n&quot; , tmp , tmp1);</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>初始化：在定义的时候赋值，称为初始化</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 正常初始化</span><br><span class="line">int a[5] = &#123;100,200,300,400,500&#125;;</span><br><span class="line"></span><br><span class="line">int a[5] = &#123;100,200,300,400,500,600&#125;; // 错误，越界了 ， 编译器会直接丢弃越界部分</span><br><span class="line">int a[ ] = &#123;100,200,300&#125;; // OK，自动根据初始化列表分配数组元素个数 ， 因此该数组的元素是 3个</span><br><span class="line">int a[5] = &#123;100,200,300&#125;; // OK，只初始化数组元素的一部分， 剩余未初始化的部分会自动初始化为 0 </span><br><span class="line">int a[5] ; // 定义了一个数组，但是没有做任何的初始化，因此数组中的值是不确定的</span><br><span class="line">int a[] ; // 错误， 数组在定义的时候必须确定他的大小</span><br></pre></td></tr></table></figure>
+
+<p>总结：</p>
+<p>在定义数组时 ，数组的大小必须确定，确定数组大小的方法有两个：</p>
+<ul>
+<li><ul>
+<li><ul>
+<li>在[ ] 直接填写元素的个数</li>
+<li>没有在 [ ] 填写大小，但是通过初始化数据的量来决定</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>操作练习：</p>
+<p>自行编写代码尝试定义一个整型数组，并对他进行初始化，完成以下操作</p>
+<ul>
+<li><ul>
+<li><ul>
+<li>输出数组中所有元素相加的值</li>
+<li>尝试从键盘获取每一个元素的值并输出所有元素累加值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="字符数组"><a href="#字符数组" class="headerlink" title="字符数组"></a><strong>字符数组</strong></h4><ul>
+<li>概念：专门存放字符的数组，称为字符数组</li>
+<li>初始化与元素引用：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">char s1[5] = &#123;&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;&#125;;       // s1存放的是字符序列，非字符串</span><br><span class="line">char s2[6] = &#123;&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;\0&#x27;&#125;; // s2存放了一个【字符串】 ， 加了一个结束符\0 </span><br><span class="line"></span><br><span class="line">char s[6] = &#123;&quot;abcde&quot;&#125;; // 使用字符串直接初始化字符数组 【字符串数组】</span><br><span class="line">char s[5] = &#123;&quot;abcde&quot;&#125;; //【字符数组】 结束符没有被存入数组</span><br><span class="line">char s[6] =  &quot;abcde&quot; ; // 大括号可以省略</span><br><span class="line"></span><br><span class="line">s[0] = &#x27;A&#x27;; // 索引第一个元素，赋值为 &#x27;A&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例代码：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">char s[5] = &#123;&quot;abcde&quot;&#125;;</span><br><span class="line">char s1[] = &quot;Hello&quot; ;</span><br><span class="line"></span><br><span class="line">s[2] = &#x27;\0&#x27; ;</span><br><span class="line"></span><br><span class="line">for (int i = 0; i &lt; 5; i++)</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;s[%d]:%c\n&quot; , i , s[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 当使用%s进行输出数据时 ，打印函数会在遇到结束符\0的时候停止输出。</span><br><span class="line">printf(&quot;s:%s\n&quot; , s );  // 如果打印函数没有遇到结束符会一直往后访问内存，直到遇到\0或被系统终止</span><br><span class="line"></span><br><span class="line">// 格式控制符%s 所对应的参数必须是一个字符串的入口地址</span><br><span class="line">printf(&quot;s[3]:%s\n&quot; , &amp;s[3] ); </span><br><span class="line">printf(&quot;&amp;s:%p\n&quot; , &amp;s );</span><br><span class="line">printf(&quot;&amp;s1:%p\n&quot; , &amp;s1 );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 数组的入口地址  =  字符串常量的地址 ；</span><br><span class="line">// s = &quot;Even&quot;;  // 【错误】 不允许直接对数组名进行赋值 </span><br><span class="line">s[0] = &#x27;E&#x27;;</span><br><span class="line">s[1] = &#x27;v&#x27;;</span><br><span class="line">// .....</span><br></pre></td></tr></table></figure>
+
+<h4 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a><strong>多维数组</strong></h4><ul>
+<li>概念：若数组元素类型也是数组，则该数组称为多维数组</li>
+<li>示例：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a[2][3];</span><br><span class="line"></span><br><span class="line">// 代码释义：</span><br><span class="line">// 1, a[2]   是数组的定义，表示该数组拥有两个元素  【明确数组名以及元素个数】</span><br><span class="line">// 2, int [3]是元素的类型，表示该数组元素是一个具有三个元素的整型数组</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:/blog/hexo/source/imgs/$%7Bfiilename%7D/image-20240109213446487.png" alt="image-20240109213446487"></p>
+<p> <img src="D:/blog/hexo/source/imgs/$%7Bfiilename%7D/image-20240109213457470.png" alt="image-20240109213457470"></p>
+<h4 id="如何对多为数组进行初始化："><a href="#如何对多为数组进行初始化：" class="headerlink" title="如何对多为数组进行初始化："></a><strong>如何对多为数组进行初始化：</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">类型  数组名 [第一维度][第二维度] = &#123; &#123;元素1&#125; , &#123;元素2&#125; &#125; ;</span><br><span class="line">int  arr1 [2][3] = &#123; &#123; 3,4,5&#125; , &#123; 9,8,7 &#125; &#125; ; // 完全初始化</span><br><span class="line">int  arr2 [2][3] = &#123; &#123; 3,4 &#125; , &#123; 9,8 &#125; &#125; ; // 不完全初始化</span><br><span class="line">int  arr3 [2][3] = &#123; 3,4,5,9,8,7  &#125; ;</span><br></pre></td></tr></table></figure>
+
+<p><strong>如何引用：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int  arr1 [2][3] = &#123; &#123; 3,4,5&#125; , &#123; 9,8,7 &#125; &#125; ; // 完全初始化</span><br><span class="line">int  arr2 [2][3] = &#123; &#123; 3,4 &#125; , &#123; 9,8 &#125; &#125; ; // 不完全初始化</span><br><span class="line">int  arr3 [2][3] = &#123; 3,4,5,9,8,7  &#125; ;</span><br><span class="line"></span><br><span class="line">// [错误] &quot;Hello&quot;这是【一个参数】它只负责对arr4[0]进行赋值，因此lo\0 会被编译器丢弃</span><br><span class="line">char arr4 [2][3] = &#123;&quot;Hello&quot;&#125; ; </span><br><span class="line"></span><br><span class="line">// 这里则把&quot;Hello&quot; 拆分成了6个参数单独对数组进行赋值</span><br><span class="line">char arr5 [2][3] = &#123;&#x27;H&#x27;,&#x27;e&#x27;,&#x27;l&#x27;,&#x27;l&#x27;,&#x27;o&#x27;, &#x27;\0&#x27;&#125; ; </span><br><span class="line"></span><br><span class="line">arr1[0][1] = 250 ; // 访问arr1 中的第0个元素 【里面】 的第1个元素</span><br><span class="line">for (int i = 0; i &lt; 2 ; i++)</span><br><span class="line">&#123;</span><br><span class="line">    for (int j = 0; j &lt; 3; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;arr5[%d][%d]:%c\n&quot; , i , j , arr5[i][j]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>操作练习：</p>
+<p>自行编写代码尝试定义一个整型数组，并对他进行初始化，完成以下操作 [ 使用二维数组实现 ]</p>
+<ul>
+<li><ul>
+<li><ul>
+<li>输出数组中所有元素相加的值</li>
+<li>尝试从键盘获取每一个元素的值并输出所有元素累加值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="数组万能拆解法"><a href="#数组万能拆解法" class="headerlink" title="数组万能拆解法"></a><strong>数组万能拆解法</strong></h4><ul>
+<li><p>任意的数组，不管有多复杂，其定义都由两部分组成。</p>
+</li>
+<li><ul>
+<li>第1部分：说明元素的类型，可以是任意的类型（除了函数）</li>
+<li>第2部分：说明数组名和元素个数</li>
+</ul>
+</li>
+</ul>
+<p><img src="D:/blog/hexo/source/imgs/$%7Bfiilename%7D/image-20240109213535813.png" alt="image-20240109213535813"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int   a[4];       // 第2部分：a[4]; 第1部分：int</span><br><span class="line">int   b[3][4];    // 第2部分：b[3]; 第1部分：int [4]</span><br><span class="line">int   c[2][3][4]; // 第2部分：c[2]; 第1部分：int [3][4]</span><br><span class="line">int  *d[6];       // 第2部分：d[6]; 第1部分：int *</span><br><span class="line">int (*e[7])(int, float); // 第2部分：e[7]; 第1部分：int (*)(int, float)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>注解：</p>
+</li>
+<li><ul>
+<li>上述示例中，a[4]、b[3]、c[2]、d[6]、e[7]本质上并无区别，它们均是数组</li>
+<li>上述示例中，a[4]、b[3]、c[2]、d[6]、e[7]唯一的不同，是它们所存放的元素的不同</li>
+<li>第1部分的声明语句，如果由多个单词组成，C语言规定需要将其拆散写到第2部分的两边</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Xuehui</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/02/24/6.%E6%95%B0%E7%BB%84/">http://example.com/2024/02/24/6.%E6%95%B0%E7%BB%84/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">和月亮一起看星星</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a><a class="post-meta__tags" href="/tags/Butterfly/">Butterfly</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/24/7.%E6%8C%87%E9%92%88/" title="（七）指针"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">（七）指针</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/24/5.%E6%8E%A7%E5%88%B6%E6%B5%81/" title="（五）控制流"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">（五）控制流</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/24/1.C%E8%AF%AD%E8%A8%80%E7%9A%84%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%A6%82%E4%BD%95%E7%BC%96%E8%BE%91%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E8%BF%90%E8%A1%8C%EF%BC%89/" title="（一）C语言的基础入门（如何编辑、编译、运行）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（一）C语言的基础入门（如何编辑、编译、运行）</div></div></a></div><div><a href="/2024/02/24/2.%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="（二）基础数据结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（二）基础数据结构</div></div></a></div><div><a href="/2024/02/24/3.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82/" title="（三）数据类型的其他细节"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（三）数据类型的其他细节</div></div></a></div><div><a href="/2024/02/24/4.%E8%BF%90%E7%AE%97%E7%AC%A6/" title="（四）运算符"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（四）运算符</div></div></a></div><div><a href="/2024/02/24/5.%E6%8E%A7%E5%88%B6%E6%B5%81/" title="（五）控制流"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（五）控制流</div></div></a></div><div><a href="/2024/02/24/7.%E6%8C%87%E9%92%88/" title="（七）指针"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（七）指针</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xuehui</div><div class="author-info__description">努力成为嵌入式工程师的萌新</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.0.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE%E6%95%B0%E7%BB%84%EF%BC%88%E8%B5%8B%E5%80%BC%E3%80%81%E5%8F%96%E5%80%BC%EF%BC%89%EF%BC%9A"><span class="toc-number">1.0.2.</span> <span class="toc-text">如何访问数组（赋值、取值）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">1.0.3.</span> <span class="toc-text">字符数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-number">1.0.4.</span> <span class="toc-text">多维数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AF%B9%E5%A4%9A%E4%B8%BA%E6%95%B0%E7%BB%84%E8%BF%9B%E8%A1%8C%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9A"><span class="toc-number">1.0.5.</span> <span class="toc-text">如何对多为数组进行初始化：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E4%B8%87%E8%83%BD%E6%8B%86%E8%A7%A3%E6%B3%95"><span class="toc-number">1.0.6.</span> <span class="toc-text">数组万能拆解法</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/11.%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/" title="（十一）进程的内存布局">（十一）进程的内存布局</a><time datetime="2024-02-24T15:17:03.430Z" title="发表于 2024-02-24 23:17:03">2024-02-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/10.%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84%E7%9A%84%E7%90%86%E8%A7%A3/" title="（十）指针与数组的理解">（十）指针与数组的理解</a><time datetime="2024-02-24T15:15:43.882Z" title="发表于 2024-02-24 23:15:43">2024-02-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/9.%E6%8C%87%E9%92%88%E7%9A%84%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/" title="（九）指针的深入理解">（九）指针的深入理解</a><time datetime="2024-02-24T15:15:27.731Z" title="发表于 2024-02-24 23:15:27">2024-02-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/8.%E6%95%B0%E7%BB%84%E7%9A%84%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/" title="（八）数组的深入理解">（八）数组的深入理解</a><time datetime="2024-02-24T15:15:23.705Z" title="发表于 2024-02-24 23:15:23">2024-02-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/7.%E6%8C%87%E9%92%88/" title="（七）指针">（七）指针</a><time datetime="2024-02-24T15:15:20.578Z" title="发表于 2024-02-24 23:15:20">2024-02-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Xuehui</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

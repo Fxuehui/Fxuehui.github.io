@@ -1,0 +1,330 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>（五）控制流 | 和月亮一起看星星</title><meta name="author" content="Xuehui"><meta name="copyright" content="Xuehui"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="控制流二路分支 逻辑：程序中某段代码需要在满足某个条件时才能运行 语法:  123456if语句：if (布尔型表达式)   &#x2F;&#x2F; 如果  布尔型表达式 的结果位真则执行以下代码，否则不执行代码块&#123;    &#x2F;&#x2F; 代码块&#125;     形式：   if 语句：表达一种 如果-则 的条件执行关系 if-else 语句：表达一种 如果-否则 的互斥分支关系   举例：   1234567">
+<meta property="og:type" content="article">
+<meta property="og:title" content="（五）控制流">
+<meta property="og:url" content="http://example.com/2024/02/24/5.%E6%8E%A7%E5%88%B6%E6%B5%81/index.html">
+<meta property="og:site_name" content="和月亮一起看星星">
+<meta property="og:description" content="控制流二路分支 逻辑：程序中某段代码需要在满足某个条件时才能运行 语法:  123456if语句：if (布尔型表达式)   &#x2F;&#x2F; 如果  布尔型表达式 的结果位真则执行以下代码，否则不执行代码块&#123;    &#x2F;&#x2F; 代码块&#125;     形式：   if 语句：表达一种 如果-则 的条件执行关系 if-else 语句：表达一种 如果-否则 的互斥分支关系   举例：   1234567">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-02-24T14:52:28.042Z">
+<meta property="article:modified_time" content="2024-02-24T14:53:45.034Z">
+<meta property="article:author" content="Xuehui">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Butterfly">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/02/24/5.%E6%8E%A7%E5%88%B6%E6%B5%81/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '（五）控制流',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-24 22:53:45'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="和月亮一起看星星"><span class="site-name">和月亮一起看星星</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">（五）控制流</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-24T14:52:28.042Z" title="发表于 2024-02-24 22:52:28">2024-02-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-24T14:53:45.034Z" title="更新于 2024-02-24 22:53:45">2024-02-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="（五）控制流"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h2><h4 id="二路分支"><a href="#二路分支" class="headerlink" title="二路分支"></a><strong>二路分支</strong></h4><ul>
+<li>逻辑：程序中某段代码需要在满足某个条件时才能运行</li>
+<li>语法:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if语句：</span><br><span class="line">if (布尔型表达式)   // 如果  布尔型表达式 的结果位真则执行以下代码，否则不执行代码块</span><br><span class="line">&#123;</span><br><span class="line">    // 代码块</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>形式：</p>
+</li>
+<li><ol>
+<li>if 语句：表达一种 如果-则 的条件执行关系</li>
+<li>if-else 语句：表达一种 如果-否则 的互斥分支关系</li>
+</ol>
+</li>
+<li><p>举例：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char const *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    int a = 120 ;</span><br><span class="line">    </span><br><span class="line">    if ( a &lt; 100  )</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;当前a的值是大于100 的...\n&quot;);</span><br><span class="line">        return 0; // 退出当前函数，恰巧当前的函数是main 主函数 因此会导致程序直接退出</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    printf(&quot;当前a的值是小于100 的...\n&quot;);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/imgs/$%7Bfiilename%7D/image-20240109152418472.png" alt="image-20240109152418472"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if-else语句：</span><br><span class="line">if (布尔型表达式) // 如果  布尔型表达式 的结果位真则执行以下代码1， 否则则执行代码块2 </span><br><span class="line">&#123;</span><br><span class="line">    // 代码块1</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">else </span><br><span class="line">&#123;</span><br><span class="line">     // 代码块2</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char const *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    int a = 12 ;</span><br><span class="line">    </span><br><span class="line">    if ( a &gt; 100  )</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;当前a的值是大于100 的...\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line"></span><br><span class="line">        printf(&quot;当前a的值是小于或等于 100 的...\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/imgs/$%7Bfiilename%7D/image-20240109152447939.png" alt="image-20240109152447939"></p>
+<ul>
+<li><p>注意：</p>
+</li>
+<li><ol>
+<li>if 语句可以单独使用，else 语句不可以，else 语句必须跟if语句配套使用  ‘else’ without a previous ‘if’</li>
+<li>不管是 if 语句还是 else 语句，代码块都必须使用大括号 { } 括起来，否则只有首句有效 （因此从可读性上不太建议这么使用）</li>
+</ol>
+</li>
+</ul>
+<h4 id="使用二路分支if-esle-实现多路分支："><a href="#使用二路分支if-esle-实现多路分支：" class="headerlink" title="使用二路分支if-esle 实现多路分支："></a><strong>使用二路分支if-esle 实现多路分支：</strong></h4><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">if (表达式1) // 如果 表达式1 的结果位真则执行以下代码1， 然后退出 ，否则判断表达式2 </span><br><span class="line">&#123;</span><br><span class="line">    // 代码块1</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">else if (表达式2 ) // 如果 表达式2 的结果位真则执行以下代码2， 否则判断表达式 3</span><br><span class="line">&#123;</span><br><span class="line">     // 代码块2</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">else if (表达式3 )// 如果 表达式3 的结果位真则执行以下代码3， 否则判断表达式 n</span><br><span class="line">&#123;</span><br><span class="line">     // 代码块3</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">........</span><br><span class="line">else  // 如果以上的所有表达式都不为真 ，则执行代码块 N </span><br><span class="line">&#123;</span><br><span class="line">     // 代码块N</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="多路分支"><a href="#多路分支" class="headerlink" title="多路分支"></a><strong>多路分支</strong></h4><ul>
+<li>逻辑：根据不同的条件执行不同的代码片段</li>
+<li>概念： switch 会对 整型表达式 进行匹配判断 是否等于 case 中的某一个 整型常量   如果匹配则执行该case 中的代码块，否则会一直比较下去直到遇到default。 </li>
+<li>语法：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">switch  ( 整型表达式 )</span><br><span class="line">&#123;</span><br><span class="line">    case 整型常量1 :</span><br><span class="line">        // 代码块1</span><br><span class="line">        break ;  // 用于跳出switch case 语句</span><br><span class="line"></span><br><span class="line">    case 整型常量2 :</span><br><span class="line">        // 代码块2</span><br><span class="line">        break ;</span><br><span class="line"></span><br><span class="line">    ........</span><br><span class="line">    </span><br><span class="line">    case 整型常量N :</span><br><span class="line">        // 代码块N</span><br><span class="line">        break ;</span><br><span class="line">    </span><br><span class="line">    default :    </span><br><span class="line">        // 代码块M</span><br><span class="line">        break ;   </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char const *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    int Num = 0 ;</span><br><span class="line">    int RetVal = scanf(&quot;%d&quot; , &amp;Num);</span><br><span class="line">    if (RetVal != 1 )</span><br><span class="line">    &#123;</span><br><span class="line">        fprintf( stderr , &quot;scanf error ...\n&quot;);</span><br><span class="line">        printf(&quot;scanf error ...\n&quot;);</span><br><span class="line">        return -1 ; // 直接结束程序退出....</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    switch ( Num )</span><br><span class="line">    &#123;</span><br><span class="line">        case 1:</span><br><span class="line">            printf(&quot;用户输入的是 1 ..\n&quot;);</span><br><span class="line">            </span><br><span class="line">        </span><br><span class="line">        case 2:</span><br><span class="line">            printf(&quot;用户输入的是 2 ..\n&quot;);</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line">        case 3:</span><br><span class="line">            printf(&quot;用户输入的是 3 ..\n&quot;);</span><br><span class="line">            break ;</span><br><span class="line"></span><br><span class="line">        case 4:</span><br><span class="line">            printf(&quot;用户输入的是 4 ..\n&quot;);</span><br><span class="line">            break ;</span><br><span class="line"></span><br><span class="line">        default :</span><br><span class="line">            printf(&quot;用户输入的并不是预想中的值 ..\n&quot;);</span><br><span class="line">            break ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>要点解析：</p>
+</li>
+<li><ol>
+<li>switch(n) 语句中的 n 必须是一个整型表达式，即 switch 判断的数据必须是整型</li>
+<li>case 语句只能使用整型常量，包括普通整型（1,2,3,4）或字符（’a’ , ‘v’ ,’n’），不包括 const 型变量。</li>
+<li>break 语句的作用是跳出整个 swtich 结构，没有 break 程序会略过下一个case往下执行，直到遇到break 或整个switch-case语句结束</li>
+<li>default 语句不是必须的，一般放在最后面（因此不需要 break）</li>
+</ol>
+</li>
+</ul>
+<h4 id="while与-do…while循环"><a href="#while与-do…while循环" class="headerlink" title="while与 do…while循环"></a><strong>while与 do…while循环</strong></h4><ul>
+<li><p>逻辑：使得程序中某一段代码可以重复循环地运行</p>
+</li>
+<li><p>形式：</p>
+</li>
+<li><ul>
+<li>while 循环：先判断，再循环</li>
+<li>do-while 循环：先循环，再判断</li>
+</ul>
+</li>
+</ul>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">while( 布尔表达式1 )  // 只要表达式 1 条件是满足的则会执行代码块中的内容 </span><br><span class="line">&#123;  // 代码块 开始 </span><br><span class="line">    </span><br><span class="line">    if( 布尔表达式2 )  // 表达式2 满足的话则会执行 以下代码块 </span><br><span class="line">    &#123;</span><br><span class="line">        break; // 跳出当前while 循环体    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">// 代码块结束</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>只是用while循环语句的时候，只要while( 表达式 ) 中的表达式时成立的那么循环将一直重复地运行下去，直到遇到以下情况：</p>
+<ul>
+<li><ul>
+<li>在While 循环体中执行 return ，则会直接退出当前的函数</li>
+<li>在 While 循环体中执行 break , 则会跳出当前的循环体</li>
+<li>在While 循环体中执行 goto语句， 则会跳到指定的代码行进行执</li>
+</ul>
+</li>
+</ul>
+<p>break 的作用，是用于跳出当前循环结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">while(1)</span><br><span class="line">&#123;</span><br><span class="line">    while(2)</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">          break ; // 直接跳出当前的 while 2</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    for( ......)</span><br><span class="line">    &#123;</span><br><span class="line">        if(...)</span><br><span class="line">        &#123;</span><br><span class="line">            break ;   // 直接跳出当前的for       </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    break ; // 直接跳出当前的 while 1</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>do-while的语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">do</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    // 代码块   ， 在任何的情况下 该代码块至少会被执行一次</span><br><span class="line">    </span><br><span class="line">&#125;while( 布尔表达式 ) ;  // 当执行了一次代码块后进入 判断表达式进行判断</span><br></pre></td></tr></table></figure>
+
+<p><img src="/imgs/$%7Bfiilename%7D/image-20240109212827022.png" alt="image-20240109212827022"></p>
+<ul>
+<li><p>语法点：</p>
+</li>
+<li><ul>
+<li>while 循环先进行判断，条件为真后才执行循环体，因此循环体可能一遍也不执行。</li>
+<li>do-while 循环先执行循环体，再进行判断，因此循环体至少会执行一遍。</li>
+<li>do-while 循环中的 while 语句后面有分号；</li>
+</ul>
+</li>
+</ul>
+<h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a><strong>for循环</strong></h4><ul>
+<li>逻辑：与 while 循环类似，但更加紧凑，for 循环将控制循环的变量集中在一行</li>
+<li>语法：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for ( 表达式1  ;  表达式2  ;  表达式3  )</span><br><span class="line">&#123;</span><br><span class="line">    // 需要循环执行的代码块    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>语法点：</p>
+</li>
+<li><ul>
+<li>循环头的标准语法是： for(表达式1 ; 表达式2 ; 表达式3）</li>
+<li>表达式1一般用来初始化循环控制变量，可以是多个也可以是单个甚至没有，如果是多个的话需要使用逗号进行分割</li>
+<li>表达式2一般用来作为循环判定条件，为真则进入循环，为假则跳出循环。 判断条件可以使用 &amp;&amp; || 逻辑运算符把多个表达式合成一个</li>
+<li>表达式3一般用来更新循环控制变量</li>
+<li>三个表达式均可以省略，但分号不能省略 。 则表示一个死循环类似于 while（1）</li>
+</ul>
+</li>
+<li><p>示例：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 循环输出一系列整数，直到100为止</span><br><span class="line">int a;</span><br><span class="line">for(a=30; a&lt;=100; a++)</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;%d\n&quot;, a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>在默认非使用C99 编译规则的编译器下编译程序有可能出现：</p>
+<p><img src="/imgs/$%7Bfiilename%7D/image-20240109212919783.png" alt="image-20240109212919783"></p>
+<p>如何解决：可以在 编译命令后面 加上选项 -std&#x3D;c99 or -std&#x3D;gnu99 即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gcc 06\ for.c  -std=c99    </span><br><span class="line">gcc 06\ for.c  -std=gnu99</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> <img src="/imgs/$%7Bfiilename%7D/image-20240109212955543.png" alt="image-20240109212955543"></p>
+<h4 id="break与continue"><a href="#break与continue" class="headerlink" title="break与continue"></a><strong>break与continue</strong></h4><ul>
+<li><p>逻辑：</p>
+</li>
+<li><ul>
+<li>break：① 跳出 switch 语句； ② 跳出当层循环体</li>
+<li>continue：结束当次循环，进入下次循环</li>
+</ul>
+</li>
+<li><p>举例：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">switch(n)</span><br><span class="line">&#123;</span><br><span class="line">    case 1:</span><br><span class="line">        printf(&quot;one\n&quot;);</span><br><span class="line">        break;  // 跳出 switch 语句</span><br><span class="line">    case 2:</span><br><span class="line">        printf(&quot;two\n&quot;);</span><br><span class="line">        break;        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">while(1)</span><br><span class="line">&#123;</span><br><span class="line">    int n = scanf(&quot;%d&quot;, &amp;a);</span><br><span class="line">    if(n == 0)</span><br><span class="line">        break; // 跳出当层 while 循环体</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for(int i=1; i&lt;=100; i++)</span><br><span class="line">&#123;</span><br><span class="line">    if(i%7 == 0)</span><br><span class="line">        continue; // 跳过所有能被7整除的数</span><br><span class="line">     </span><br><span class="line">    printf(&quot;%d\n&quot;, i);       </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>goto语句</strong></p>
+<ul>
+<li>逻辑：无条件跳转</li>
+<li>语法：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">goto  标签名;</span><br><span class="line"></span><br><span class="line">标签名:</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>示例：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;%d\n&quot;, __LINE__); // 打印第3行 </span><br><span class="line">    </span><br><span class="line">    // 无条件跳转到label处 </span><br><span class="line">    goto label;</span><br><span class="line">    printf(&quot;%d\n&quot;, __LINE__); // 打印第7行，此处被略过</span><br><span class="line">label:  </span><br><span class="line">    printf(&quot;%d\n&quot;, __LINE__); // 打印第9行</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>语法：</p>
+</li>
+<li><ul>
+<li>goto语句直接跳转到本代码块中的标签处</li>
+<li>标签指的是以冒号结尾的标识符</li>
+</ul>
+</li>
+<li><p>作用：</p>
+</li>
+<li><ul>
+<li>goto语句的无条件跳转不利于程序的可读性，一般在应用层不建议使用，主要出现在驱动的源代码中（底层的代码）</li>
+<li>goto语句常被用在程序的严重错误处理中（硬件的初始化操作）</li>
+<li>总结当程序出现了严重的错误，则可以使用goto 到程序的默认进行还原（释放空间…）并退出的操作</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Xuehui</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/02/24/5.%E6%8E%A7%E5%88%B6%E6%B5%81/">http://example.com/2024/02/24/5.%E6%8E%A7%E5%88%B6%E6%B5%81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">和月亮一起看星星</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a><a class="post-meta__tags" href="/tags/Butterfly/">Butterfly</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/24/6.%E6%95%B0%E7%BB%84/" title="（六）数组"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">（六）数组</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/24/4.%E8%BF%90%E7%AE%97%E7%AC%A6/" title="（四）运算符"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">（四）运算符</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/24/1.C%E8%AF%AD%E8%A8%80%E7%9A%84%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%A6%82%E4%BD%95%E7%BC%96%E8%BE%91%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E8%BF%90%E8%A1%8C%EF%BC%89/" title="（一）C语言的基础入门（如何编辑、编译、运行）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（一）C语言的基础入门（如何编辑、编译、运行）</div></div></a></div><div><a href="/2024/02/24/2.%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="（二）基础数据结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（二）基础数据结构</div></div></a></div><div><a href="/2024/02/24/3.%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82/" title="（三）数据类型的其他细节"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（三）数据类型的其他细节</div></div></a></div><div><a href="/2024/02/24/4.%E8%BF%90%E7%AE%97%E7%AC%A6/" title="（四）运算符"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（四）运算符</div></div></a></div><div><a href="/2024/02/24/6.%E6%95%B0%E7%BB%84/" title="（六）数组"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（六）数组</div></div></a></div><div><a href="/2024/02/24/7.%E6%8C%87%E9%92%88/" title="（七）指针"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（七）指针</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xuehui</div><div class="author-info__description">努力成为嵌入式工程师的萌新</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%81"><span class="toc-number">1.</span> <span class="toc-text">控制流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E8%B7%AF%E5%88%86%E6%94%AF"><span class="toc-number">1.0.1.</span> <span class="toc-text">二路分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%BA%8C%E8%B7%AF%E5%88%86%E6%94%AFif-esle-%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%B7%AF%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-number">1.0.2.</span> <span class="toc-text">使用二路分支if-esle 实现多路分支：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%B7%AF%E5%88%86%E6%94%AF"><span class="toc-number">1.0.3.</span> <span class="toc-text">多路分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#while%E4%B8%8E-do%E2%80%A6while%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.0.4.</span> <span class="toc-text">while与 do…while循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.0.5.</span> <span class="toc-text">for循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#break%E4%B8%8Econtinue"><span class="toc-number">1.0.6.</span> <span class="toc-text">break与continue</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/11.%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/" title="（十一）进程的内存布局">（十一）进程的内存布局</a><time datetime="2024-02-24T15:17:03.430Z" title="发表于 2024-02-24 23:17:03">2024-02-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/10.%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84%E7%9A%84%E7%90%86%E8%A7%A3/" title="（十）指针与数组的理解">（十）指针与数组的理解</a><time datetime="2024-02-24T15:15:43.882Z" title="发表于 2024-02-24 23:15:43">2024-02-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/9.%E6%8C%87%E9%92%88%E7%9A%84%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/" title="（九）指针的深入理解">（九）指针的深入理解</a><time datetime="2024-02-24T15:15:27.731Z" title="发表于 2024-02-24 23:15:27">2024-02-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/8.%E6%95%B0%E7%BB%84%E7%9A%84%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/" title="（八）数组的深入理解">（八）数组的深入理解</a><time datetime="2024-02-24T15:15:23.705Z" title="发表于 2024-02-24 23:15:23">2024-02-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/7.%E6%8C%87%E9%92%88/" title="（七）指针">（七）指针</a><time datetime="2024-02-24T15:15:20.578Z" title="发表于 2024-02-24 23:15:20">2024-02-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Xuehui</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
