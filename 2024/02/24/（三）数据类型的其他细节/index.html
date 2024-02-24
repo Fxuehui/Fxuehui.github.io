@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>（三）数据类型的其他细节 | 和月亮一起看星星</title><meta name="author" content="Xuehui"><meta name="copyright" content="Xuehui"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据类型的其他细节类型转换 概念：不一致但相互兼容的数据类型，在同一表达式中将会发生类型转换。  转换模式：   隐式转换：系统按照隐式规则自动进行的转换    cel &#x3D; (5*(fah-32)) &#x2F; 9;   强制转换：用户显式自定义进行的转换     (double)a  强制把a转换成 double     语法： （目标类型）需要转换的变量名     隐式规则：从小类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="（三）数据类型的其他细节">
+<meta property="og:url" content="http://example.com/2024/02/24/%EF%BC%88%E4%B8%89%EF%BC%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82/index.html">
+<meta property="og:site_name" content="和月亮一起看星星">
+<meta property="og:description" content="数据类型的其他细节类型转换 概念：不一致但相互兼容的数据类型，在同一表达式中将会发生类型转换。  转换模式：   隐式转换：系统按照隐式规则自动进行的转换    cel &#x3D; (5*(fah-32)) &#x2F; 9;   强制转换：用户显式自定义进行的转换     (double)a  强制把a转换成 double     语法： （目标类型）需要转换的变量名     隐式规则：从小类">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-02-24T08:08:28.351Z">
+<meta property="article:modified_time" content="2024-02-24T08:08:50.479Z">
+<meta property="article:author" content="Xuehui">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Butterfly">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/02/24/%EF%BC%88%E4%B8%89%EF%BC%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '（三）数据类型的其他细节',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-24 16:08:50'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="和月亮一起看星星"><span class="site-name">和月亮一起看星星</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">（三）数据类型的其他细节</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-24T08:08:28.351Z" title="发表于 2024-02-24 16:08:28">2024-02-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-24T08:08:50.479Z" title="更新于 2024-02-24 16:08:50">2024-02-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="（三）数据类型的其他细节"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="数据类型的其他细节"><a href="#数据类型的其他细节" class="headerlink" title="数据类型的其他细节"></a>数据类型的其他细节</h2><h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a><strong>类型转换</strong></h4><ul>
+<li><p>概念：不一致但相互兼容的数据类型，在同一表达式中将会发生类型转换。</p>
+</li>
+<li><p>转换模式：</p>
+</li>
+<li><ul>
+<li><p>隐式转换：系统按照隐式规则自动进行的转换    cel &#x3D; (5*(fah-32)) &#x2F; 9; </p>
+</li>
+<li><p>强制转换：用户显式自定义进行的转换     (double)a  强制把a转换成 double  </p>
+</li>
+<li><ul>
+<li>语法： （目标类型）需要转换的变量名</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>隐式规则：从小类型向大类型转换，目的是保证不丢失表达式中数据的精度</p>
+</li>
+</ul>
+<p>​    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAugAAAAwCAYAAABDqI/7AAAAAXNSR0IArs4c6QAAD+dJREFUeF7tXU2oXdUV3o9AcVBK+poQEzJoSNIS84O8m6YD6yA/jygUxLTQgKI4eGkHNhHqAydGjCN5Fk3ioLw3EAsSS9OIUNBgZ+mkP/cNig4sSCZKDE3TDAraTm7ZJ13P/fbd++y1/87d9+zvQQa5d/+d71tr7e+ss86+M6PRaCTwBwSAABAAAkAACAABIAAEgEARCMxAoBfBAxYBBIAAEAACQAAIAAEgAAQaBCDQYQhAAAgAASAABIAAEAACQKAgBCDQCyIDSwECQAAIAAEgAASAABAAAhDosAEgAASAABAAAkAACAABIFAQAhDoBZGBpQABIAAEgAAQAAJAAAgAgTGBvrCwIFZXV6tBZm5uTqysrBR7vbXxIYkomZPa+AAX5YQGcAEuOAjUFqM4mLS1gV/FIoj+KRAw2eGYQB8MBinmmqoxhsNhseutkQ9JRqmc1MgHuCgnPIALcOFCoMYY5cLE9T38yoUQvu8CAd0OrQJ9OFzuYj0TnWMwONXMX6pzyrVRsK2Bj7vXWzYnNfEBLiYantZNDi7ABReBmmIUFxNbO/hVLILonwIBmx1CoEOgp7CvZGMgYCaDMnogcBENYbIBwEUyKKMHAhfREBYzALgshoqqFwKBbqC/dOdEBr08n60pO1W6f4CLcvwDXICLchDgrwQxjo8VWuZDAAIdAj2fdSUcGQEzIZiRQ4GLSAATdgcXCcGMHApcRAJYUHdwWRAZFS8FAh0CfSrMHwGzHJrABbjgIoAMOhep/O1q4iIWTcS4WATRPwUCEOgQ6CnsKPsYCJjZIWZPAC7YUGVvCC6yQ8yeAFywoSq+IbgsnqIqFgiBDoE+FYaOgFkOTeACXHARqClrC7/gWkX57cBl+RzVsEIIdAj0qbBzBMxyaAIX4IKLAAQ6F6n87WriIhZNxLhYBNE/BQIQ6BDoKewo+xgImNkhZk8ALthQZW8ILrJDzJ4AXLChKr4huCyeoioWCIEOgT4Vho6AWQ5N4AJccBGoKWsLv+BaRfntwGX5HNWwwiIE+oULvxPD4d/F+fM/Fxs3fn3iuJfunBKglBvfl1/+V7z00q8b3J9//glxzz1fmzgH+gJK5yQlH3Tt16/fEE8/fV6cOvVD8cgjPyiGk75yMRx+LE6d+qVYXv6FGAy+WwzebQvpKxfymu/c+bc4c+ai+PDD6+Khhw6JxcWTYmnp7WLjVJ+5UG0wd1zy2Y9yaYe+c5mbwxzB08cuQufn2lNXewUE+gQz6Ldu3RKbNm0KsqWUgrALw9dF57lzT3mJoK4CZignKflIIdDfffeP4sqVa1luevvKRVdBN8jhLZ36yoUpJuWOU3RDcOLEg0E3xH3lQje93OLOh2euoPL1ub5zmZtDX7w57X3sgjOeqQ3XnrraKyDQJyjQDx48KA4cOCCOHj0qjh07JrZs2cK2q5SCsAvDpwsLNeyuAmYoJyn5YBtBS0NuoAmZq69chNpmCIap+vSVC5NYzh2nYkVLX7mAQE/lrePjTGq/ibX1fIjYR87t/3Jm7r7Z1V4BgT5BgU6ijpawZ8+eRqzPz8+L7du3t/pASkHYheFPi0AP5SQlHymCHzfQhMzVlRDpmouugm4I5rY+feUCAt1uJV37BQR6So9dP9akuIRAN3PK3Te72is6E+gkAt9//88NMrKmkOqdCZTTp0+Is2ffEJ9/frtp8+STx8Xp0z9ah6R8dH/u3N16afl39uwTa48jVaG5b98O8corv1k3D9fNut70RqNRs7SZmZm1Je7cubMR60eOHBG7d+8eW3qIIFSxu/feWfH662fEjh1bhYrbww9/v6n7NOFLn+kcSKzV9wdMPMzPD+QVig8++Ou6a+HW+5bOSQgfLnvUg2gbT4Qj9SEfknPo/LjmdX3fVy5sQdfH3nX/Mdm3jHdvvnm1gVn64TPP/Fi89trloHcN+siFjjfF+ePHDxnflVFr1X3ilrp3qJy0jdHmG33kQl6vio2MJbRP6+/GmGKPav+2RJB+M6a2e+yxY2Jx8VdWTWASVLrWUPc6V2yj7/vKJV2fTaC7OCR7kO8M6npN9Seah2Iq/f/ZZ3/SvFMi/1zvu+l9pcZ4770/jfV1+T/X7tRre/HFp8QLL7yxtlZVr8p2tr1CjyNcfWOzy04EOpF+/Pj31gS3/OyLL/4j7rvv22sBQAWBgrR6gRKUTz/9x5og10FSHdMk7kt1TrkuEum0RlWsy2y6FOvy3969e5smvoJQr0mWWF279jcxP39wTaDLmycVN2lsV6/+ZU3IqwasCnK9XRsPoXeeXQdMX058+eDYok2gh/LEmZPTpq9cmGzTJAC49m5rJ2MY+Y+6uZg2OBcffeWCm0E3CQ3TfuPaOyTOsVnFvnFBcZxjrybfoc/IrrlCSd0/VE2gj2faj0xzyL1vefn36/axWv2qTaBzOFRv2Fx6zaThSMDqglfng9uX4/9cu1OvTU1q2eKJfqCAvleEah0Vi+wCnVM+YRKCFKAHg++MZdHpAmjsLVu+2bQxBRSXI5q+J1BC+qbo0ybWZZ26zKpfunSpEfWrqyvOKV0c2HDTjd9mcDpXbTyEGm3pnNy8ebPhYThcdvLBbWAT6OqGaRMW3Ed13LWYgkZI3xR9XP4RyoVum7H2zvUfk/Dg4tRXv+AIdImR7fQplyjT946UAp3LXep2qf3CZv+6vbbt1WockqeDmfiyZdD1OCfx0hNNepwz8R7y8m9f/com0LkcylP2OHrNNh59vn37ZmsGnduX6/9bt36LZXck0PWk5N19/eOmuoOqDjh7hSnG+Pp8doHOcY62x1QkvvUL04/gko9L2gjzAaZk59y4cWOTSb98+XJzSRyBToYnH6ubsnTcO8w20Se/u3nzX43TtfHQR4EuOblz505nAl1OpD4eNPlYrQI9hgvdNmPtXefFNl5M5rb0WBXqFxyBfuPGP63HkBKmptOiTHuHFI8xPEif7BsXXHtti+mqsOEKpbaEki6UODcAIUKpb1zq+oebPDCJU45es9mEK1lI85mOu9X7cv1/794dXgLddOS3Hk+4e4Wqi0KOr84u0NsCJRlNG+GqGFFrE+UjiJdf/qm4ePFKM4xLGIYI9OFw6NPNu636gkhb9mPz5s3i8OHDTeZ8bm5ObNiwwbvERa/LU0tZXAKdnmK0GRsnULY5nwu80h4f65wcOnRo4gJdfdrUhUAv1T9CuTAFXbrp1IMrx971TJDNf2KEYV/9wkegm0S4jqlr70gp0PviF1x71UWzGstVn+IKJZdAV8WbyQ/pPTd9T3GVVajt++pXdI0mga5miG0cyt+H4Oi1jz66vi7jTONxBbppLTaB7vJ/17sr6rGqoTelVLpj0jEx74B1JtDbfmyFQ7jpbkknLHUGvatAa3pJVNadS0Eu/+3fv3+M95iaZ70OzIabSWDYflCqqwx6qZzE8GG7OWl7SdSUQe+rQPf1j1AuuFkReiLlemLE9Z9pEuhdceEj0E17i5oYmp39xlim3SQUYnhQM+h9iVGhYkUXdyS2usqg2566u5JAkxToXflVm0C3/Uhb21ML+mFJ3Z+kQOdkwU1ZZW72vbQMui2Z42N3etvsAp1zx8QR6CbC9XqmaRXoRIo8rYVE+a5du1p5DRUhNKhay+eqDSTh56rJpTtRnwwI13gnkdGQa+NyEsuHCQcIdHnyz1d/ubng1BXK1bSdOtF242Sri6bs7rS8JNqFX3AEelu8V+PbJ598NiYWTLWw0ybQffcN3xjFtVdX/bIqXExZee67NvqNsdy3TDXoKX6gre/7jY65L4d6oo5bfkLz3n//LmsNuuuEGerL9X+qm9cFtGkeU329nEd/98G0V9ieQHA1jqlddoEuJ6WLUcsq9FNcXIRLA5DH/5FYNL3pPY0CXf5QkRTlsq5827ZtbC59gq3E6p13rolHH31Q0B0rJ+PNfflTD5JtAj10E+wyYIZw4sMHl+QYge56SY67Bp+gETOmeZ5B80Nevv4RyoUedG0vO3PtXfcf+r+8VjrFhTiWx2KWLtC75IIj0GUsM71g6xIftlNCOAcTtNl432KUj73aTl3Ts6i2k11kWYp+2ot+WpXtZA9VO5huvCTfr776W3Hy5JHmWGHOX9+41K/ZtA9zOeQkVOnmSb73Rifx2fzOxAc95Xf15fi/qkFNNmY6btV1epDPXvHAA/u8fjVdxaMTgS4nVDci+X/TOei2s7QpK0Wg0AXo52JOm0C/ffu2mJ2d5cSLsTa+IqQNf24NOi1Cr7fSa/tcT03UelDuOaFdBcxQTnz54JAeI9DVYBhTAzdJgd41F7YnRKH2bhJ86guKFAfprOe2MkCbvfTVL7gC3bS3yM/0uOLaOyhxobbzvWHqIxc+9qpjbDt/XP89DllDfOHCFWF6Aku/Z0L2r/NqEov6mks+B73rGEc42hJlHA65Al3OpcZOycPS0s/EW2/9oVmG6xx0bl9d25j8X37msjtar7zhe/zxefHcc1+dyKbHAtNeob/nZ1sHZ++nNp0JdJ9FTbptV4E25jpzCMKY9eTuWzonNfEBLtJaO+dF+kkL9NArhl+EIpe+X01cxKKHGBeLoLl/yIk6eVYyHaNCoBt4Kt055ZJrC7alc1ITH+AibXDX6xt9RgcXPmjlbQsu8uLb5ejgMg/aMcmIPCsqe1QIdAj0si30/6tDwCyHJnARxoV89L609LZYXDwp6PQDUw2lz+jgwgetvG3BRV58uxwdXMajLUtU1Pprzo8Uxc/arxEg0CHQp8KiETDLoQlchHPBrZfkzgAuuEjlbwcu8mPc1QzgMh5pU022elBI/Az9HwECHQJ9KqwcAbMcmsAFuOAigNIvLlL529XERSyaiHGxCKJ/CgQg0CHQU9hR9jEQMLNDzJ4AXLChyt4QXGSHmD0BuGBDVXxDcFk8RVUsEAIdAn0qDB0BsxyawAW44CJQU9YWfsG1ivLbgcvyOaphhRDoEOhTYecImOXQBC7ABRcBCHQuUvnb1cRFLJqIcbEIon8KBCDQIdBT2FH2MRAws0PMngBcsKHK3hBcZIeYPQG4YENVfENwWTxFVSwQAh0CfSoMHQGzHJrABbjgIlBT1hZ+wbWK8tuBy/I5qmGFEOgQ6FNh5wiY5dAELsAFFwEIdC5S+dvVxEUsmohxsQiifwoEvAV6ikmnZYzhcFjsUinYFrvATAsrlZMa+QAXmYw8YFhwEQBapi7gIhOwExgWXE4AdEw5hoBuhzOj0WiktlpYWBCrq6vVQDc3NydWVlaKvd7a+JBElMxJbXyAi3JCA7gAFxwEaotRHEza2sCvYhFE/xQImOxwTKCnmAhjAAEgAASAABAAAkAACAABIBCGAAR6GG7oBQSAABAAAkAACAABIAAEsiAAgZ4FVgwKBIAAEAACQAAIAAEgAATCEIBAD8MNvYAAEAACQAAIAAEgAASAQBYE/gfbs6isCFouyAAAAABJRU5ErkJggg==" alt="0"></p>
+<h4 id="隐式转换示例代码"><a href="#隐式转换示例代码" class="headerlink" title="隐式转换示例代码"></a><strong>隐式转换示例代码</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char  a = &#x27;a&#x27;;</span><br><span class="line">int  b = 12; </span><br><span class="line">float c = 3.14; </span><br><span class="line">float x = a + b - c; // 在该表达式中将发生 [隐式转换] ，所有操作数被提升为float</span><br></pre></td></tr></table></figure>
+
+<h4 id="强制转换：用户强行将某类型的数据转换为另一种类型，此过程可能丢失精度"><a href="#强制转换：用户强行将某类型的数据转换为另一种类型，此过程可能丢失精度" class="headerlink" title="强制转换：用户强行将某类型的数据转换为另一种类型，此过程可能丢失精度"></a><strong>强制转换：用户强行将某类型的数据转换为另一种类型，此过程可能丢失精度</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char  a = &#x27;a&#x27;; </span><br><span class="line">int   b = 12; </span><br><span class="line">float c = 3.14; </span><br><span class="line">float x = a + b - (int)c; // 在该表达式中a隐式自动转换为int，c被强制转为int</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<p>不管是隐式转换，还是强制转换，变换的都是操作数只在运算过程中的类型，是临时的，操作数本身的类型不会改变，也无法改变。</p>
+<h4 id="数据类型的本质"><a href="#数据类型的本质" class="headerlink" title="数据类型的本质"></a><strong>数据类型的本质</strong></h4><ul>
+<li><p>概念：各种不同的数据类型，本质上是用户与系统对某一块内存数据的解释方式的约定。</p>
+</li>
+<li><p>推论：</p>
+</li>
+<li><ul>
+<li>类型转换，实际上是对先前定义时候的约定，做了一个临时的打破。</li>
+<li>理论上，可以对任意的数据做任意的类型转换，但转换之后的数据解释不一定有意义。</li>
+</ul>
+</li>
+</ul>
+<p>例子：</p>
+<p>17620828909       电话号码    银行存款    地址    坐标</p>
+<h4 id="整型数据尺寸"><a href="#整型数据尺寸" class="headerlink" title="整型数据尺寸"></a><strong>整型数据尺寸</strong></h4><ul>
+<li><p>概念：整型数据尺寸是指某种整型数据所占用内存空间的大小</p>
+</li>
+<li><p>C语言标准并未规定整型数据的具体大小，只规定了相互之间的 “ 相对大小 ” ，比如：</p>
+</li>
+<li><ul>
+<li>short 不可比 int 长</li>
+<li>long 不可比 int 短</li>
+<li>long 型数据长度等于系统字长  （在32位系统中long &#x3D; 32位&#x3D; 4字节  、 在64为系统中 long &#x3D; 64位 &#x3D; 8字节）</li>
+</ul>
+</li>
+<li><p>系统字长：CPU 一次处理的数据长度，称为字长。比如32位系统、64位系统。</p>
+</li>
+<li><p>典型尺寸：</p>
+</li>
+<li><ul>
+<li>char 占用1个字节</li>
+<li>short 占用2个字节</li>
+<li>int 在16位系统中占用2个字节，在32位和64位系统中一般都占用4个字节</li>
+<li>long 的尺寸等于系统字长</li>
+<li>long long 在32位系统中一般占用8个字节，在64位系统中一般占用8个字节</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:\Users\xuehui\AppData\Roaming\Typora\typora-user-images\image-20240109151147985.png" alt="image-20240109151147985"></p>
+<ul>
+<li><p>存在问题：</p>
+</li>
+<li><ul>
+<li>同样的代码，放在不同的系统中，可能会由于数据尺寸发生变化而无法正常运行。 </li>
+<li>因此，系统标准整型数据类型，是不可移植的，这个问题在底层代码中尤为突出。</li>
+</ul>
+</li>
+</ul>
+<h4 id="可移植性整型"><a href="#可移植性整型" class="headerlink" title="可移植性整型"></a><strong>可移植性整型</strong></h4><ul>
+<li>概念：不管放到什么系统，尺寸保持不变的整型数据，称为可移植性整型</li>
+<li>关键：typedef  用于对变量类型进行取别名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typedef int Even ; // 给int 取了一个别名 Even </span><br><span class="line">typedef int int32_t; // 将类型 int 取个别名，称为 int32_t </span><br><span class="line">typedef long int64_t;// 将类型 long 取个别名，称为 int64_t</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>思路：</p>
+</li>
+<li><ol>
+<li>为所有的系统提供一组固定的、能反应数据尺寸的、统一的可移植性整型名称</li>
+<li>在不同的系统中，为这些可移植性整型提供对应的 typedef 语句</li>
+</ol>
+<p><img src="C:\Users\xuehui\AppData\Roaming\Typora\typora-user-images\image-20240109151313742.png" alt="image-20240109151313742"></p>
+</li>
+<li><p>系统预定义的可移植性整型</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/* Convenience types.  */</span><br><span class="line">typedef unsigned char ___uchar;</span><br><span class="line">typedef unsigned short int __u_short;</span><br><span class="line">typedef unsigned int __u_int;</span><br><span class="line">typedef unsigned long int __u_long;</span><br><span class="line">/* Fixed-size types, underlying types depend on word size and compiler.  */</span><br><span class="line">typedef signed char __int8_t;</span><br><span class="line">typedef unsigned char __uint8_t;</span><br><span class="line">typedef signed short int __int16_t;</span><br><span class="line">typedef unsigned short int __uint16_t;</span><br><span class="line">typedef signed int __int32_t;</span><br><span class="line">typedef unsigned int __uint32_t;</span><br><span class="line">#if __WORDSIZE == 64</span><br><span class="line">typedef signed long int __int64_t;</span><br><span class="line">typedef unsigned long int __uint64_t;</span><br><span class="line">#else</span><br></pre></td></tr></table></figure>
+
+<p>以下代码在任何的系统下运行都是的到 8 字节：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">__int64_t i = 64 ;    </span><br><span class="line">printf(&quot;%d\n&quot; , sizeof(i));</span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Xuehui</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/02/24/%EF%BC%88%E4%B8%89%EF%BC%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82/">http://example.com/2024/02/24/%EF%BC%88%E4%B8%89%EF%BC%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">和月亮一起看星星</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a><a class="post-meta__tags" href="/tags/Butterfly/">Butterfly</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/02/24/%EF%BC%88%E4%BA%8C%EF%BC%89%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="（二）基础数据结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">（二）基础数据结构</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/24/%EF%BC%88%E4%B8%80%EF%BC%89C%E8%AF%AD%E8%A8%80%E7%9A%84%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%A6%82%E4%BD%95%E7%BC%96%E8%BE%91%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E8%BF%90%E8%A1%8C%EF%BC%89/" title="（一）C语言的基础入门（如何编辑、编译、运行）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（一）C语言的基础入门（如何编辑、编译、运行）</div></div></a></div><div><a href="/2024/02/24/%EF%BC%88%E4%BA%8C%EF%BC%89%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="（二）基础数据结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（二）基础数据结构</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xuehui</div><div class="author-info__description">努力成为嵌入式工程师的萌新</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82"><span class="toc-number">1.</span> <span class="toc-text">数据类型的其他细节</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.0.1.</span> <span class="toc-text">类型转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">1.0.2.</span> <span class="toc-text">隐式转换示例代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2%EF%BC%9A%E7%94%A8%E6%88%B7%E5%BC%BA%E8%A1%8C%E5%B0%86%E6%9F%90%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%8F%A6%E4%B8%80%E7%A7%8D%E7%B1%BB%E5%9E%8B%EF%BC%8C%E6%AD%A4%E8%BF%87%E7%A8%8B%E5%8F%AF%E8%83%BD%E4%B8%A2%E5%A4%B1%E7%B2%BE%E5%BA%A6"><span class="toc-number">1.0.3.</span> <span class="toc-text">强制转换：用户强行将某类型的数据转换为另一种类型，此过程可能丢失精度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-number">1.0.4.</span> <span class="toc-text">数据类型的本质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B4%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%B0%BA%E5%AF%B8"><span class="toc-number">1.0.5.</span> <span class="toc-text">整型数据尺寸</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E7%A7%BB%E6%A4%8D%E6%80%A7%E6%95%B4%E5%9E%8B"><span class="toc-number">1.0.6.</span> <span class="toc-text">可移植性整型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text"></span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/%EF%BC%88%E4%B8%89%EF%BC%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82/" title="（三）数据类型的其他细节">（三）数据类型的其他细节</a><time datetime="2024-02-24T08:08:28.351Z" title="发表于 2024-02-24 16:08:28">2024-02-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/%EF%BC%88%E4%BA%8C%EF%BC%89%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="（二）基础数据结构">（二）基础数据结构</a><time datetime="2024-02-24T07:46:50.549Z" title="发表于 2024-02-24 15:46:50">2024-02-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/24/%EF%BC%88%E4%B8%80%EF%BC%89C%E8%AF%AD%E8%A8%80%E7%9A%84%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%A6%82%E4%BD%95%E7%BC%96%E8%BE%91%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E8%BF%90%E8%A1%8C%EF%BC%89/" title="（一）C语言的基础入门（如何编辑、编译、运行）">（一）C语言的基础入门（如何编辑、编译、运行）</a><time datetime="2024-02-24T07:36:43.234Z" title="发表于 2024-02-24 15:36:43">2024-02-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Xuehui</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
