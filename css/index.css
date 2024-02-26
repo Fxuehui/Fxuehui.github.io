@@ -1499,6 +1499,17 @@ body {
 input::placeholder {
   color: var(--font-color);
 }
+#web_bg {
+  position: fixed;
+  z-index: -999;
+  width: 100%;
+  height: 100%;
+  background: url("../img/banner.jpg");
+  background-attachment: local;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 h1,
 h2,
 h3,
@@ -4394,9 +4405,6 @@ h1.page-title + .tag-cloud-list {
 .katex-wrap {
   overflow: auto;
 }
-.katex-wrap::-webkit-scrollbar {
-  display: none;
-}
 mjx-container {
   overflow-x: auto;
   overflow-y: hidden;
@@ -6133,4 +6141,243 @@ blockquote.pullquote.right {
   z-index: 1000;
   display: none;
   background: rgba(0,0,0,0.6);
+}
+#local-search .search-dialog .local-search-box {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+}
+#local-search .search-dialog .local-search-box input {
+  padding: 5px 14px;
+  width: 100%;
+  outline: none;
+  border: 2px solid #49b1f5;
+  border-radius: 40px;
+  background: var(--search-bg);
+  color: var(--search-input-color);
+  -webkit-appearance: none;
+}
+#local-search .search-dialog .search-wrap {
+  display: none;
+}
+#local-search .search-dialog .local-search-hit-item {
+  position: relative;
+  padding-left: 24px;
+  line-height: 1.7;
+}
+#local-search .search-dialog .local-search-hit-item:hover:before {
+  border-color: var(--pseudo-hover);
+}
+#local-search .search-dialog .local-search-hit-item:before {
+  position: absolute;
+  top: 0.45em;
+  left: 0;
+  width: 0.5em;
+  height: 0.5em;
+  border: 3px solid #49b1f5;
+  border-radius: 0.5em;
+  background: transparent;
+  content: '';
+  line-height: 0.5em;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+#local-search .search-dialog .local-search-hit-item a {
+  display: block;
+  color: var(--search-a-color);
+}
+#local-search .search-dialog .local-search-hit-item a:hover {
+  color: #49b1f5;
+}
+#local-search .search-dialog .local-search-hit-item .search-result-title {
+  font-weight: 600;
+}
+#local-search .search-dialog .local-search-hit-item .search-result {
+  margin: 0 0 8px;
+}
+#local-search .search-dialog .search-result-list {
+  overflow-y: overlay;
+  margin: 0 -20px;
+  padding: 0 22px;
+  max-height: calc(80vh - 200px);
+}
+@media screen and (max-width: 768px) {
+  #local-search .search-dialog .search-result-list {
+    max-height: calc(var(--search-height) - 220px) !important;
+  }
+}
+.search-keyword {
+  background: transparent;
+  color: #f47466;
+  font-weight: bold;
+}
+#web_bg {
+  background: -webkit-linear-gradient(135deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: -moz-linear-gradient(135deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: -o-linear-gradient(135deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: -ms-linear-gradient(135deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-animation: gradientBG 15s ease infinite;
+  -moz-animation: gradientBG 15s ease infinite;
+  -o-animation: gradientBG 15s ease infinite;
+  -ms-animation: gradientBG 15s ease infinite;
+  animation: gradientBG 15s ease infinite;
+}
+#web_bg {
+  background-image: url("../img/banner.jpg"),;
+linear-gradient(60deg, rgba(255,165,150,0.5) 5%, rgba(0,228,255,0.35))
+}
+linear-gradient(60deg, rgba(255,165,150,0.5) 5%, rgba(0,228,255,0.35))
+/* 侧边栏个人信息卡片动态渐变色 */
+#aside-content>.card-widget {
+  background: -webkit-linear-gradient(135deg, #e8d8b9, #eccec5, #a3e9eb, #bdbdf0, #eec1ea);
+  background: -moz-linear-gradient(135deg, #e8d8b9, #eccec5, #a3e9eb, #bdbdf0, #eec1ea);
+  background: -o-linear-gradient(135deg, #e8d8b9, #eccec5, #a3e9eb, #bdbdf0, #eec1ea);
+  background: -ms-linear-gradient(135deg, #e8d8b9, #eccec5, #a3e9eb, #bdbdf0, #eec1ea);
+  background: linear-gradient(-45deg, #e8d8b9, #eccec5, #a3e9eb, #bdbdf0, #eec1ea);
+  -webkit-box-shadow: 0 0 5px #424444;
+  box-shadow: 0 0 5px #424444;
+  position: relative;
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 10s ease infinite;
+  -moz-animation: Gradient 10s ease infinite;
+  -webkit-animation: Gradient 10s ease infinite !important;
+  -moz-animation: Gradient 10s ease infinite !important;
+  -o-animation: Gradient 10s ease infinite !important;
+  -ms-animation: Gradient 10s ease infinite !important;
+  animation: Gradient 10s ease infinite !important;
+}
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* 个人信息Follow me按钮 */
+#aside-content>.card-widget.card-info>#card-info-btn {
+  background-color: #3eb8be;
+  border-radius: 8px;
+}
+#aside-content>.sticky_layout>.card-widget {
+  background: rgba(255,255,255,0.8);
+}
+/*文章页面*/
+.layout>#post {
+  background: rgba(255,255,255,0.8);
+}
+/*分类页面*/
+.layout>#page {
+  background: rgba(255,255,255,0.6);
+}
+/*时间轴页面*/
+.layout>#archive {
+  background: rgba(255,255,255,0.6);
+}
+@-moz-keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-webkit-keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-o-keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-o-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
