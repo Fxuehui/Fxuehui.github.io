@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>基于STM32F407ZG的智能家居 | 和月亮一起看星星</title><meta name="author" content="Xuehui"><meta name="copyright" content="Xuehui"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于STM32F407ZG的智能家居一.功能设计本次设计的目标是想实现如下图所示的智能家居环境 本次设计所实现的功能：   1.用红外遥控输入密码，密码正确，绿灯亮，系统开始工作，密码不正确红灯亮，不工作。   2.红外避障检测到汽车靠近，自动抬杆。   3.检测光照强度，显示到TFTLCD屏幕上，天亮自动开窗。   4.检测温湿度数值，温度高，自动开风扇。   5.火焰传感器检测到有火，烟雾传感">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于STM32F407ZG的智能家居">
+<meta property="og:url" content="http://example.com/2024/03/24/P_%E5%9F%BA%E4%BA%8ESTM32F407ZG%E7%9A%84%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/index.html">
+<meta property="og:site_name" content="和月亮一起看星星">
+<meta property="og:description" content="基于STM32F407ZG的智能家居一.功能设计本次设计的目标是想实现如下图所示的智能家居环境 本次设计所实现的功能：   1.用红外遥控输入密码，密码正确，绿灯亮，系统开始工作，密码不正确红灯亮，不工作。   2.红外避障检测到汽车靠近，自动抬杆。   3.检测光照强度，显示到TFTLCD屏幕上，天亮自动开窗。   4.检测温湿度数值，温度高，自动开风扇。   5.火焰传感器检测到有火，烟雾传感">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2024-03-24T14:04:14.552Z">
+<meta property="article:modified_time" content="2024-03-30T01:40:43.581Z">
+<meta property="article:author" content="Xuehui">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="STM32">
+<meta property="article:tag" content="Project">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/03/24/P_%E5%9F%BA%E4%BA%8ESTM32F407ZG%E7%9A%84%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Xuehui","link":"链接: ","source":"来源: 和月亮一起看星星","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基于STM32F407ZG的智能家居',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-30 09:40:43'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 7.1.1"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouye"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw iconfont icon-shijian"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw iconfont icon-biaoqian"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont icon-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-xiuxian"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw iconfont icon-yinle"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-guanyuwomen"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="和月亮一起看星星"><span class="site-name">和月亮一起看星星</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouye"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw iconfont icon-shijian"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw iconfont icon-biaoqian"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont icon-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-xiuxian"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw iconfont icon-yinle"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-guanyuwomen"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">基于STM32F407ZG的智能家居</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-24T14:04:14.552Z" title="发表于 2024-03-24 22:04:14">2024-03-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-30T01:40:43.581Z" title="更新于 2024-03-30 09:40:43">2024-03-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/STM32/">STM32</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="基于STM32F407ZG的智能家居"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="基于STM32F407ZG的智能家居"><a href="#基于STM32F407ZG的智能家居" class="headerlink" title="基于STM32F407ZG的智能家居"></a>基于STM32F407ZG的智能家居</h1><h2 id="一-功能设计"><a href="#一-功能设计" class="headerlink" title="一.功能设计"></a>一.功能设计</h2><p>本次设计的目标是想实现如下图所示的智能家居环境</p>
+<p><strong>本次设计所实现的功能：</strong></p>
+<p>  1.用红外遥控输入密码，密码正确，绿灯亮，系统开始工作，密码不正确红灯亮，不工作。</p>
+<p>  2.红外避障检测到汽车靠近，自动抬杆。</p>
+<p>  3.检测光照强度，显示到TFTLCD屏幕上，天亮自动开窗。</p>
+<p>  4.检测温湿度数值，温度高，自动开风扇。</p>
+<p>  5.火焰传感器检测到有火，烟雾传感器检测到有烟雾，蜂鸣器就报警。</p>
+<p>  6.通过WIFI模块连接到原子云，从云端远程控制开门、开窗，同时将温度、湿度、光照信息上传到原子云显示。</p>
+<h2 id="二-程序流程图"><a href="#二-程序流程图" class="headerlink" title="二.程序流程图"></a>二.程序流程图</h2><h2 id="三-硬件选择即运用"><a href="#三-硬件选择即运用" class="headerlink" title="三.硬件选择即运用"></a>三.硬件选择即运用</h2><h4 id="1-单片机STM32F407ZGT6"><a href="#1-单片机STM32F407ZGT6" class="headerlink" title="1.单片机STM32F407ZGT6"></a>1.单片机STM32F407ZGT6</h4><h4 id="2-红外遥控器"><a href="#2-红外遥控器" class="headerlink" title="2.红外遥控器"></a>2.红外遥控器</h4><ul>
+<li><p>编码方式使用的是：PWM 脉冲宽度调制 的 NEC 协议。</p>
+</li>
+<li><p>红外接收头：REMOTE 	PA8(TIM1_CH1)</p>
+</li>
+<li><p>进行本实验时不需要额外连线。程序将 TIM1_CH1设计输入捕获，然后将接收到的脉冲信号解码就可以了。</p>
+</li>
+</ul>
+<p>使用时需要遥控器有红外管的一端对准开发板上的红外管才能正确收到信号。</p>
+<img src="/imgs/$%7Bfiilename%7D/image-20240324222457900.png" alt="image-20240324222457900" style="zoom:50%;" />
+
+<h4 id="3-红外寻迹-循迹-避障传感模块"><a href="#3-红外寻迹-循迹-避障传感模块" class="headerlink" title="3.红外寻迹-循迹-避障传感模块"></a>3.红外寻迹-循迹-避障传感模块</h4><img src="/imgs/$%7Bfiilename%7D/wps1.png" alt="img" style="zoom:50%;" />
+
+<p><strong>模块描述</strong>  </p>
+<p>模块对环境光线适应能力强，其具有一对红外线发射与接收管，发射管发射出一定频率的红外线，当检测方向遇到障碍物（反射面）时，红外线反射回来被接收管接收，经过比较器电路处理之后，绿色指示灯会亮起，同时信号输出接口输出数字信号（一个低电平信号），可通过电位器旋钮调节检测距离，有效距离范围 2～30cm，工作电压为3.3V-5V**。该传感器的探测距离可以通过电位器调节、具有干扰小、便于装配、使用方便等特点，可以广泛应用于机器人避障、避障小车、流水线计数及黑白线循迹等众多场合。</p>
+<p><strong>模块参数说明</strong></p>
+<p>1 当模块检测到前方障碍物信号时，电路板上绿色指示灯点亮电平，同时OUT端口持续输出低电平信号,该模块检测距离2～30cm，检测角度35°，检测距离可以通过电位器进行调节，顺时针调电位器，检测距离增加；逆时针调电位器，检测距离减少。</p>
+<p>2、传感器主动红外线反射探测,因此目标的反射率和形状是探测距离的关键。其中黑色探测距离最小,白色最大;小面积物体距离小,大面积距离大。</p>
+<p>3、传感器模块输出端口OUT可直接与单片机IO口连接即可，也可以直接驱动一个5V继电器；</p>
+<p>4、比较器采用LM393，工作稳定；</p>
+<p>5、可采用3-5V直流电源对模块进行供电。当电源接通时，红色电源指示灯点亮；</p>
+<p>6、具有3mm的螺丝孔，便于固定、安装；</p>
+<p>7、电路板尺寸：3.2CM*1.4CM</p>
+<p>8、每个模块在发货已经将阈值比较电压通过电位器调节好，非特殊情况，请勿随意调节电位器。</p>
+<p><strong>模块接口说明</strong></p>
+<p>1 VCC 外接3.3V-5V电压（可以直接与5v单片机和3.3v单片机相连）</p>
+<p>2 GND 外接GND</p>
+<p>3 OUT 小板数字量输出接口（0和1）</p>
+<p><strong>电位器？</strong></p>
+<p><strong>检测角度基准线？</strong></p>
+<p>​		常见的红外避障模块检测角度范围通常为20°至60°之间。</p>
+<h4 id="4-光敏电阻传感器"><a href="#4-光敏电阻传感器" class="headerlink" title="4.光敏电阻传感器"></a>4.光敏电阻传感器</h4><img src="/imgs/$%7Bfiilename%7D/image-20240324231544566.png" alt="image-20240324231544566" style="zoom: 33%;" />
+
+<p><strong>用途：</strong> </p>
+<p>光线亮度检测,光线亮度传感器，智能小车寻光模块 </p>
+<p><strong>模块特色：</strong> </p>
+<p>1、采用灵敏型光敏电阻传感器 </p>
+<p>2、比较器输出，信号干净，波形好，驱动能力强，超过 15mA。 </p>
+<p>3、配可调电位器可调节检测光线亮度 </p>
+<p>4、工作电压 3.3V-5V </p>
+<p>5、输出形式 ：DO 开关量输出（0 和 1）和 AO 模拟量输出（电压） </p>
+<p>6、设有固定螺栓孔，方便安装 </p>
+<p>7、小板 PCB 尺寸：3.2cm x 1.4cm </p>
+<p>8、使用宽电压 LM393 比较器 </p>
+<p><strong>模块使用说明</strong> </p>
+<p>1、光敏电阻模块对环境光线最敏感，一般用来检测周围环境的光线</p>
+<p>的亮度，触发单片机或继电器模块等； </p>
+<p>2、模块在环境光线亮度达不到设定阈值时，DO 端输出高电平，当外</p>
+<p>界环境光线亮度超过设定阈值时，DO 端输出低电平； </p>
+<p>3、DO 输出端可以与单片机直接相连，通过单片机来检测高低电平，</p>
+<p>由此来检测环境的光线亮度改变； </p>
+<p>4、DO 输出端可以直接驱动本店继电器模块，由此可以组成一个光控</p>
+<p>开关。 </p>
+<p>5、小板模拟量输出 AO 可以和 AD 模块相连，通过 AD 转换，可以获得</p>
+<p>环境光强更精准的数值</p>
+<p><strong>产品接线说明：</strong> </p>
+<p>1、VCC 接电源正极 3.3-5V </p>
+<p>2、GND 接电源负极 </p>
+<p>3、DO TTL 开关信号输出 </p>
+<p>4、AO 模拟信号输出 </p>
+<p><img src="/imgs/$%7Bfiilename%7D/image-20240324231848084.png" alt="image-20240324231848084"></p>
+<h4 id="5-DHT11温湿度传感器"><a href="#5-DHT11温湿度传感器" class="headerlink" title="5.DHT11温湿度传感器"></a>5.DHT11温湿度传感器</h4><h4 id="6-风扇模块L9110"><a href="#6-风扇模块L9110" class="headerlink" title="6.风扇模块L9110"></a>6.风扇模块L9110</h4><h4 id="7-舵机SG90"><a href="#7-舵机SG90" class="headerlink" title="7.舵机SG90"></a>7.舵机SG90</h4><h4 id="8-WIFI模块esp8266"><a href="#8-WIFI模块esp8266" class="headerlink" title="8.WIFI模块esp8266"></a>8.WIFI模块esp8266</h4><h4 id="9-LED和蜂鸣器"><a href="#9-LED和蜂鸣器" class="headerlink" title="9.LED和蜂鸣器"></a>9.LED和蜂鸣器</h4><h4 id="10-火焰传感器"><a href="#10-火焰传感器" class="headerlink" title="10.火焰传感器"></a>10.火焰传感器</h4><h4 id="11-MQ-2烟雾气敏传感器"><a href="#11-MQ-2烟雾气敏传感器" class="headerlink" title="11.MQ-2烟雾气敏传感器"></a>11.MQ-2烟雾气敏传感器</h4><h4 id="12-RC522-IC感应模块"><a href="#12-RC522-IC感应模块" class="headerlink" title="12 RC522-IC感应模块"></a>12 RC522-IC感应模块</h4><h2 id="四-IO接线"><a href="#四-IO接线" class="headerlink" title="四.IO接线"></a>四.IO接线</h2><p>红外避障端口  数字输出端“OUT” 接到单片机PB2口</p>
+<p>汽车抬杆控制口为								  		PB0</p>
+<p>光照传感器AO接											 	  PA5</p>
+<p>控制开窗的舵机接PB1</p>
+<p>温湿度传感器接												 	PA7</p>
+<p> 风扇的INA接PC0  INB 接PC2</p>
+<p> 火焰传感器 数字输出端“D” 接PB6</p>
+<p> 气体传感器 数字输出端“D” 接PB7 </p>
+<p> 控制大门的舵机接 PB2</p>
+<h2 id="五-课题意义"><a href="#五-课题意义" class="headerlink" title="五.课题意义"></a>五.课题意义</h2><p>​    基于STM32单片机的智能家居课题具有以下意义：</p>
+<p>​    \1. 提升生活品质：智能家居系统可以通过自动化和智能化的方式，优化家居环境，提供更加舒适和便捷的生活体验。例如，通过自动调节照明、温度和湿度等参数，提高室内的舒适度；通过远程控制和智能时间表，实现家电的智能化管理，提供更加方便的生活方式。</p>
+<p>​    \2. 节能环保：智能家居系统可以通过智能控制和能耗监测，实现能源的有效利用和节约。例如，通过智能照明控制，合理调节灯光亮度和开启时间，降低能耗；利用智能化的能源管理系统，定时监控和控制家电的用电量，提高能源利用效率。</p>
+<p>​    \3. 安全保障：智能家居系统可以提供更高的安全性和防护性。通过安防监控系统、智能锁、入侵报警等智能设备的联动，实现家居的安全防护功能，提供实时的安全监控和警报系统。</p>
+<p>​    \4. 开发创新：基于STM32单片机的智能家居课题可以促使开发者深入研究和应用嵌入式系统、物联网以及传感器技术等方面的知识。通过设计和开发智能家居系统，创新出更加智能、高效和可靠的解决方案，推动技术的发展和应用。</p>
+<p>​    \5. 学习与实践机会：智能家居课题为学生提供了学习和实践的机会。在实际项目中，学生可以通过设计、搭建和调试智能家居系统，提高嵌入式系统开发、网络通信、传感器应用等技能，培养解决问题和创新思维的能力。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Xuehui</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/03/24/P_%E5%9F%BA%E4%BA%8ESTM32F407ZG%E7%9A%84%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/">http://example.com/2024/03/24/P_%E5%9F%BA%E4%BA%8ESTM32F407ZG%E7%9A%84%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">和月亮一起看星星</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a><a class="post-meta__tags" href="/tags/STM32/">STM32</a><a class="post-meta__tags" href="/tags/Project/">Project</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/04/11/IEET%20%E6%95%99%E5%AD%A6%E6%A1%A3%E6%A1%88%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2024/03/21/Q_GPIO/" title="GPIO"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">GPIO</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/03/21/Q_GPIO/" title="GPIO"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-21</div><div class="title">GPIO</div></div></a></div><div><a href="/2024/02/24/1.C%E8%AF%AD%E8%A8%80%E7%9A%84%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%EF%BC%88%E5%A6%82%E4%BD%95%E7%BC%96%E8%BE%91%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E8%BF%90%E8%A1%8C%EF%BC%89/" title="（一）C语言的基础入门（如何编辑、编译、运行）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（一）C语言的基础入门（如何编辑、编译、运行）</div></div></a></div><div><a href="/2024/02/24/10.%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84%E7%9A%84%E7%90%86%E8%A7%A3/" title="（十）指针与数组的理解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（十）指针与数组的理解</div></div></a></div><div><a href="/2024/02/25/12.%E5%87%BD%E6%95%B0/" title="（十二）函数"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-25</div><div class="title">（十二）函数</div></div></a></div><div><a href="/2024/02/24/11.%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/" title="（十一）进程的内存布局"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（十一）进程的内存布局</div></div></a></div><div><a href="/2024/02/24/4.%E8%BF%90%E7%AE%97%E7%AC%A6/" title="（四）运算符"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-24</div><div class="title">（四）运算符</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xuehui</div><div class="author-info__description">努力成为嵌入式工程师的萌新</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:1715993289@qq.com" target="_blank" title="Email"><i class="iconfont icon-youjian"></i></a><a class="social-icon" href="tencent://message/?uin=1715993289&amp;Site=Sambow&amp;Menu=yes" target="_blank" title="QQ"><i class="iconfont icon-QQ"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ESTM32F407ZG%E7%9A%84%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85"><span class="toc-number">1.</span> <span class="toc-text">基于STM32F407ZG的智能家居</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.</span> <span class="toc-text">一.功能设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.2.</span> <span class="toc-text">二.程序流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E7%A1%AC%E4%BB%B6%E9%80%89%E6%8B%A9%E5%8D%B3%E8%BF%90%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">三.硬件选择即运用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8D%95%E7%89%87%E6%9C%BASTM32F407ZGT6"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">1.单片机STM32F407ZGT6</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BA%A2%E5%A4%96%E9%81%A5%E6%8E%A7%E5%99%A8"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">2.红外遥控器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%BA%A2%E5%A4%96%E5%AF%BB%E8%BF%B9-%E5%BE%AA%E8%BF%B9-%E9%81%BF%E9%9A%9C%E4%BC%A0%E6%84%9F%E6%A8%A1%E5%9D%97"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">3.红外寻迹-循迹-避障传感模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%85%89%E6%95%8F%E7%94%B5%E9%98%BB%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">4.光敏电阻传感器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-DHT11%E6%B8%A9%E6%B9%BF%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.3.0.5.</span> <span class="toc-text">5.DHT11温湿度传感器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E9%A3%8E%E6%89%87%E6%A8%A1%E5%9D%97L9110"><span class="toc-number">1.3.0.6.</span> <span class="toc-text">6.风扇模块L9110</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E8%88%B5%E6%9C%BASG90"><span class="toc-number">1.3.0.7.</span> <span class="toc-text">7.舵机SG90</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-WIFI%E6%A8%A1%E5%9D%97esp8266"><span class="toc-number">1.3.0.8.</span> <span class="toc-text">8.WIFI模块esp8266</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-LED%E5%92%8C%E8%9C%82%E9%B8%A3%E5%99%A8"><span class="toc-number">1.3.0.9.</span> <span class="toc-text">9.LED和蜂鸣器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E7%81%AB%E7%84%B0%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.3.0.10.</span> <span class="toc-text">10.火焰传感器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-MQ-2%E7%83%9F%E9%9B%BE%E6%B0%94%E6%95%8F%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.3.0.11.</span> <span class="toc-text">11.MQ-2烟雾气敏传感器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-RC522-IC%E6%84%9F%E5%BA%94%E6%A8%A1%E5%9D%97"><span class="toc-number">1.3.0.12.</span> <span class="toc-text">12 RC522-IC感应模块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-IO%E6%8E%A5%E7%BA%BF"><span class="toc-number">1.4.</span> <span class="toc-text">四.IO接线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E8%AF%BE%E9%A2%98%E6%84%8F%E4%B9%89"><span class="toc-number">1.5.</span> <span class="toc-text">五.课题意义</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/15/QT%E5%AD%A6%E4%B9%A0/" title="QT学习笔记">QT学习笔记</a><time datetime="2024-04-15T01:54:53.267Z" title="发表于 2024-04-15 09:54:53">2024-04-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/11/IEET%20%E6%95%99%E5%AD%A6%E6%A1%A3%E6%A1%88%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="无题">无题</a><time datetime="2024-04-11T06:16:33.805Z" title="发表于 2024-04-11 14:16:33">2024-04-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/24/P_%E5%9F%BA%E4%BA%8ESTM32F407ZG%E7%9A%84%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" title="基于STM32F407ZG的智能家居">基于STM32F407ZG的智能家居</a><time datetime="2024-03-24T14:04:14.552Z" title="发表于 2024-03-24 22:04:14">2024-03-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/21/Q_GPIO/" title="GPIO">GPIO</a><time datetime="2024-03-21T11:34:45.149Z" title="发表于 2024-03-21 19:34:45">2024-03-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/21/Q_%E5%A6%82%E4%BD%95%E7%9C%8B%E6%87%82%E5%8D%95%E7%89%87%E6%9C%BA%E5%8E%9F%E7%90%86%E5%9B%BE/" title="如何看懂单片机原理图">如何看懂单片机原理图</a><time datetime="2024-03-21T05:21:20.573Z" title="发表于 2024-03-21 13:21:20">2024-03-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Xuehui</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
